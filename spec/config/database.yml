@@ -1,0 +1,8 @@
+test:
+  adapter: postgresql
+  database: lportal
+  username: postgres
+  password: postgres
+  host: 127.0.0.1
+  timeout: 5000
+
