@@ -13,7 +13,7 @@ module Liferay
     end
     
     def self.find_user
-      Classname.find_by_value(User.liferay_class)
+      Classname.find_by_value(User.class_name)
     end
     
     def self.find_counter

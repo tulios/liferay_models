@@ -72,7 +72,7 @@ module Liferay
     
     # Class Methods
     
-    def self.liferay_class
+    def self.class_name
     	'com.liferay.portal.model.User'
     end
     

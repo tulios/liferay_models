@@ -1,4 +1,6 @@
 require 'yaml'
+require 'pg'
+  
 module DatabaseConnector
 
   @@database_configuration = YAML.load_file('spec/config/database.yml')

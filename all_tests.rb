@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 [
   'counter', 'classname', 'company', 'role', 'user', 'contact'
 ].each do |test|

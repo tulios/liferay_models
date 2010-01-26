@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe User do
+                                                
+  before (:each) do
+    Classname.new(:value => User.class_name).save!
+    Classname.find_user.should_not == nil
+  end
 
   it "should have a set method for alias column email" do
     email1 = 'email1@email.com'
