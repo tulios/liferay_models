@@ -4,7 +4,6 @@ module Scripts
 	SCRIPTS_DIR = 'spec/db/'
 
 	def self.load
-		puts "Dropando schema e recriando tabelas"
     DatabaseConnector.establish_connection
     
 		Dir.entries(SCRIPTS_DIR).sort.each do |file|
@@ -20,8 +19,6 @@ module Scripts
 	end	
 
 	def self.execute_script!(script)
-		puts "Executando: #{script}"
-		
 		sql = ""
 		File.open("#{SCRIPTS_DIR}#{script}", "r").each do |line|
 			sql << line
@@ -39,9 +36,9 @@ module Scripts
 			con.execute(sql)
 			con.commit_db_transaction
 			
-			puts "-> Sql executado com sucesso!"
+			puts "-> Success!"
 		rescue StandardError => e
-			puts "-> Falha ao executar sql. (#{e})"
+			puts "-> Failure (#{e})"
 		end
 	end
 

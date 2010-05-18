@@ -153,13 +153,7 @@ describe User do
 		user.save.should be_true
 		url = Group.generate_friendlyurl(user)
 		
-		group = Group.new(
-	    :companyid     => user.companyid,
-	    :creatoruserid => user.id,
-	    :classnameid   => Classname.find_user.id,
-	    :classpk       => user.id,
-	    :friendlyurl   => url
-    )
+		group = create_group(user)
     group.save.should be_true
     
     # associate the group with user

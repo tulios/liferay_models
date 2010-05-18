@@ -43,6 +43,7 @@ module Liferay
     
     alias_column :email, :emailaddress
     alias_column :name, :firstname
+    alias_column :username , :screename
     
     validates_format_of :emailaddress, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,}\Z)/
     validates_uniqueness_of :emailaddress, :screenname
@@ -91,6 +92,7 @@ module Liferay
 		
 		  user.email.to_url
     end
+  
     
     # Private methods
     #
@@ -99,7 +101,7 @@ module Liferay
     def fill_default_values
     	unless self.uuid_
         require 'uuidtools'
-        self.uuid_ = UUID.random_create.to_s
+        self.uuid_ = UUIDTools::UUID.random_create.to_s
       end
       
 		  self.createdate          ||= Time.now

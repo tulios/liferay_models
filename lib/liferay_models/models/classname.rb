@@ -24,5 +24,17 @@ module Liferay
       Classname.find_by_value(Role.class_name)
     end
     
+    def self.find_tag_entry
+      Classname.find_by_value(TagEntry.class_name)
+    end
+    
+    def self.find_tag_asset
+      Classname.find_by_value(TagAsset.class_name)
+    end
+    
+    def self.find_tag_vocabulary
+      Classname.find_by_value(TagVocabulary.class_name)
+    end
+    
   end
 end
