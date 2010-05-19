@@ -5,5 +5,5 @@ require File.join(File.dirname(__FILE__), 'liferay_models', 'liferay')
 include Liferay
 
 module LiferayModels
-  VERSION = '0.0.2'
+  VERSION = '0.2'
 end
