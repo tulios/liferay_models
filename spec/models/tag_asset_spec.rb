@@ -48,7 +48,7 @@ describe TagAsset do
     (0...10).each do |number|
       user = create_user_with_group!(:firstname => "name-#{number}")
       
-      tag_entry = create_tag_entry_with_vocabulary!(user)
+      tag_entry = create_tag_entry_with_vocabulary!(user, :name => "tag-#{number + 1}")
       tag_entry.save.should be_true 
       
       if number.odd?
@@ -59,17 +59,62 @@ describe TagAsset do
     tag_asset1.save.should be_true
     tag_asset2.save.should be_true
 
-    #checking assets tags
     classnameid = Classname.find_user.id
+
+    #checking assets tags
     tag_asset1.tag_entries.count.should == 5
     tag_asset2.tag_entries.count.should == 10
     
-    #checking com.liferay.portal.model.User tags
+    entries = TagEntry.find_all_by_classnameid_with_quantity(classnameid)
     
+    entries.should_not be_nil
+    entries.length.should == 10
     
+    entries.each do |tag|
+      if tag.name.split('-')[-1].to_i.odd?
+        tag.quantity.to_i.should == 1
+      else
+        tag.quantity.to_i.should == 2
+      end
+    end
     
   end
+  
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

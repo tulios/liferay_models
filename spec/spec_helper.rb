@@ -128,10 +128,10 @@ def create_tag_entry(vocabulary, params = {})
 end
 
 def create_tag_entry_with_vocabulary!(user, params ={})
-  vocabulary = create_tag_vocabulary(user,params)
+  vocabulary = create_tag_vocabulary(user)
  	vocabulary.save.should be_true
 
- 	tag_entry = create_tag_entry(vocabulary)
+ 	tag_entry = create_tag_entry(vocabulary, params)
  	tag_entry.save.should be_true
  	
  	tag_entry

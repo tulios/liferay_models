@@ -25,6 +25,17 @@ module Liferay
       'com.liferay.portlet.tags.model.TagsEntry'
     end
     
+    def self.find_all_by_classnameid_with_quantity(classnameid)
+      TagEntry.find(:all, 
+                    :select => "#{TagEntry.table_name}.#{TagEntry.primary_key}, 
+                                #{TagEntry.table_name}.name, 
+                                count(#{TagAsset.table_name}.#{TagAsset.primary_key}) quantity",
+                    :joins => :tag_assets, 
+                    :conditions => ["classnameid = ?", classnameid], 
+                    :group => "#{TagEntry.table_name}.#{TagEntry.primary_key}, 
+                               #{TagEntry.table_name}.name")
+    end
+    
     # Private methods
     #
     private 

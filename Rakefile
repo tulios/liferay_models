@@ -16,7 +16,7 @@ $hoe = Hoe.spec 'liferay_models' do
   self.extra_deps           = [
     ['activerecord','>= 2.3.3'],
     ['activesupport','>= 2.3.3'],
-    ['uuidtools', '>= 1.0.3'],
+    ['uuidtools', '>= 2.2.0'],
     ['stringex', '>= 1.1.0']
   ]
 
