@@ -8,6 +8,18 @@ module Liferay
     set_table_name :classname_
     set_primary_key :classnameid
     
+    def self.taggables
+      {
+        :blogs_entry           => "com.liferay.portlet.blogs.model.BlogsEntry",	
+        :bookmarks_entry       => "com.liferay.portlet.bookmarks.model.BookmarksEntry",
+        :document_library_file => "com.liferay.portlet.documentlibrary.model.DLFileEntry",
+        :image_gallery_image   => "com.liferay.portlet.imagegallery.model.IGImage",
+        :journal_article       => "com.liferay.portlet.journal.model.JournalArticle",
+        :message_board_message => "com.liferay.portlet.messageboards.model.MBMessage",
+        :wiki_page             => "com.liferay.portlet.wiki.model.WikiPage"
+      }
+    end
+    
     def self.class_name
       'com.liferay.portal.model.ClassName'
     end
