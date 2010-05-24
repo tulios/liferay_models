@@ -20,7 +20,9 @@ FIX (describe your package)
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+	gem install liferay_models
+	
+	include Liferay
 
 == LICENSE:
 

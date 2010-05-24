@@ -29,7 +29,7 @@ $hoe = Hoe.spec 'liferay_models' do
   self.extra_deps << ["activerecord", ">= 2.3.5"]
   self.extra_deps << ["activesupport", ">= 2.3.5"]
   self.extra_deps << ["stringex", ">= 1.1.0"]
-  self.extra_deps << ["uuidtools", ">= 2.2.0"]      
+  self.extra_deps << ["uuidtools", ">= 2.1.0"]      
 end
 
 require 'newgem/tasks'

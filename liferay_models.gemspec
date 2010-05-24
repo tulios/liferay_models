@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<activerecord>, [">= 2.3.5"])
       s.add_runtime_dependency(%q<activesupport>, [">= 2.3.5"])
       s.add_runtime_dependency(%q<stringex>, [">= 1.1.0"])
-      s.add_runtime_dependency(%q<uuidtools>, [">= 2.2.0"])
+      s.add_runtime_dependency(%q<uuidtools>, [">= 2.1.0"])
       s.add_development_dependency(%q<hoe>, [">= 2.6.0"])
     else
       s.add_dependency(%q<hoe>, [">= 2.5.0"])
@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<activerecord>, [">= 2.3.5"])
       s.add_dependency(%q<activesupport>, [">= 2.3.5"])
       s.add_dependency(%q<stringex>, [">= 1.1.0"])
-      s.add_dependency(%q<uuidtools>, [">= 2.2.0"])
+      s.add_dependency(%q<uuidtools>, [">= 2.1.0"])
       s.add_dependency(%q<hoe>, [">= 2.6.0"])
     end
   else
@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<activerecord>, [">= 2.3.5"])
     s.add_dependency(%q<activesupport>, [">= 2.3.5"])
     s.add_dependency(%q<stringex>, [">= 1.1.0"])
-    s.add_dependency(%q<uuidtools>, [">= 2.2.0"])
+    s.add_dependency(%q<uuidtools>, [">= 2.1.0"])
     s.add_dependency(%q<hoe>, [">= 2.6.0"])
   end
 end
