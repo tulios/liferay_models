@@ -3,11 +3,11 @@ require 'spec_helper'
 describe TagVocabulary do
   
   before (:each) do
-    Classname.new(:value => TagVocabulary.class_name).save!
-    Classname.find_tag_vocabulary.should_not be_nil
+    ClassName.new(:value => TagVocabulary.class_name).save!
+    ClassName.find_tag_vocabulary.should_not be_nil
     
-    Classname.new(:value => User.class_name).save!
-    Classname.find_user.should_not be_nil
+    ClassName.new(:value => User.class_name).save!
+    ClassName.find_user.should_not be_nil
   end
   
   it 'should be saved' do

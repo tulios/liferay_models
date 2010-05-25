@@ -14,6 +14,7 @@ module DatabaseConnector
     
     if new or @@connection.nil?
       @@connection = ActiveRecord::Base.establish_connection('test').connection
+      puts 'connected!'
     end
     
     @@connection
@@ -24,3 +25,5 @@ module DatabaseConnector
   end
 
 end
+
+DatabaseConnector.establish_connection

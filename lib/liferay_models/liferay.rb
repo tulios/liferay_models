@@ -69,7 +69,7 @@ module Liferay
 end
 
 [
-  'counter', 'classname', 'company', 'role', 'user', 'contact', 'group', 'tag_asset', 'tag_entry', 'tag_vocabulary'
+  'counter', 'class_name', 'company', 'role', 'user', 'contact', 'group', 'tag_asset', 'tag_entry', 'tag_vocabulary'
 ].each do |model|
   require File.join(File.dirname(__FILE__), 'models', "#{model}")
 end

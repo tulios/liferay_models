@@ -3,14 +3,19 @@ require 'spec_helper'
 describe TagAsset do
   
   before (:each) do
-    Classname.new(:value => TagAsset.class_name).save!
-    Classname.find_tag_asset.should_not be_nil
+    ClassName.new(:value => TagAsset.class_name).save!
+    ClassName.find_tag_asset.should_not be_nil
     
-    Classname.new(:value => User.class_name).save!
-    Classname.find_user.should_not be_nil
+    ClassName.new(:value => User.class_name).save!
+    ClassName.find_user.should_not be_nil
     
-    Classname.new(:value => TagEntry.class_name).save!
-    Classname.find_tag_entry.should_not be_nil
+    ClassName.new(:value => TagEntry.class_name).save!
+    ClassName.find_tag_entry.should_not be_nil
+    
+    TagAsset.asset_publisher_class_names.each do |key, value|
+      ClassName.new(:value => value).save!
+      ClassName.find_by_value(value).should_not be_nil
+    end
   end
   
   it 'should be saved' do
@@ -59,7 +64,7 @@ describe TagAsset do
     tag_asset1.save.should be_true
     tag_asset2.save.should be_true
 
-    classnameid = Classname.find_user.id
+    classnameid = ClassName.find_user.id
 
     #checking assets tags
     tag_asset1.tag_entries.count.should == 5
@@ -78,6 +83,30 @@ describe TagAsset do
       end
     end
     
+  end
+  
+  it 'should find all tag entries from informed class names' do
+    owner = create_user_with_group!(:firstname => 'Túlio')
+    
+    tag_entry = create_tag_entry_with_vocabulary!(owner, :name => "tag")
+    
+    x = 1
+        
+    TagAsset.asset_publisher_class_names.each do |key, value|
+      2.times do
+        tag_asset = create_tag_asset(owner, {:classnameid => ClassName.find_by_value(value).id, :classpk => x})
+        tag_asset.tag_entries << tag_entry
+        tag_asset.save.should be_true
+        x += 1
+      end
+    end
+    
+    ids = TagAsset.asset_publisher_class_names.collect{|key, value| ClassName.find_by_value(value).id}
+    entries = TagEntry.find_all_by_classnameid_with_quantity(ids)
+    
+    entries.should_not be_nil
+    entries.length.should == 1
+    entries[0].quantity.should == (TagAsset.asset_publisher_class_names.length * 2).to_s
   end
   
 end

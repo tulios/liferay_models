@@ -46,9 +46,9 @@ module Liferay
     
     def self.classname
     
-      cn = Classname.find_all_by_value(Role.class_name)
+      cn = ClassName.find_all_by_value(Role.class_name)
       if cn.empty?
-        cn = Classname.new(:value => Role.class_name)
+        cn = ClassName.new(:value => Role.class_name)
         cn.save
         
         return cn

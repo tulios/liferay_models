@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe Group do
 
+  before (:each) do
+    ClassName.new(:value => User.class_name).save!
+    ClassName.find_user.should_not == nil
+  end
+
   it "should generate a unique friendlyurl" do
     user = create_user(:firstname => 'Túlio')
 		user.screenname = 'túlio silva'
@@ -14,7 +19,7 @@ describe Group do
 		group = Group.new(
 	    :companyid     => user.companyid,
 	    :creatoruserid => user.id,
-	    :classnameid   => Classname.find_user.id,
+	    :classnameid   => ClassName.find_user.id,
 	    :classpk       => user.id,
 	    :friendlyurl   => url
     )

@@ -3,14 +3,14 @@ require 'spec_helper'
 describe TagEntry do
   
   before (:each) do
-    Classname.new(:value => TagEntry.class_name).save!
-    Classname.find_tag_entry.should_not == nil
+    ClassName.new(:value => TagEntry.class_name).save!
+    ClassName.find_tag_entry.should_not == nil
   
-    Classname.new(:value => TagVocabulary.class_name).save!
-    Classname.find_tag_vocabulary.should_not be_nil
+    ClassName.new(:value => TagVocabulary.class_name).save!
+    ClassName.find_tag_vocabulary.should_not be_nil
     
-    Classname.new(:value => User.class_name).save!
-    Classname.find_user.should_not be_nil
+    ClassName.new(:value => User.class_name).save!
+    ClassName.find_user.should_not be_nil
   end
   
   it 'should be saved' do
@@ -61,7 +61,7 @@ describe TagEntry do
     end
     
     #Counting assets for each tag 
-    classnameid = Classname.find_user.id
+    classnameid = ClassName.find_user.id
     tag_entry1.tag_assets.count(:conditions => {:classnameid => classnameid}).should == 5
     tag_entry2.tag_assets.count(:conditions => {:classnameid => classnameid}).should == 10
   end

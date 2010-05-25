@@ -26,12 +26,18 @@ module Liferay
     end
     
     def self.find_all_by_classnameid_with_quantity(classnameid)
+      if classnameid.class == Array
+        conditions = [classnameid.collect {'classnameid = ?'}.join(' OR ')] + classnameid
+      else
+        conditions =  ["classnameid = ?", classnameid]
+      end
+      
       TagEntry.find(:all, 
                     :select => "#{TagEntry.table_name}.#{TagEntry.primary_key}, 
                                 #{TagEntry.table_name}.name, 
                                 count(#{TagAsset.table_name}.#{TagAsset.primary_key}) quantity",
                     :joins => :tag_assets, 
-                    :conditions => ["classnameid = ?", classnameid], 
+                    :conditions => conditions, 
                     :group => "#{TagEntry.table_name}.#{TagEntry.primary_key}, 
                                #{TagEntry.table_name}.name")
     end

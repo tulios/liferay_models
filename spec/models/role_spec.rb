@@ -3,11 +3,11 @@ require 'spec_helper'
 describe Role do
 
   it "should have a classname" do
-    Classname.count.should == 0
+    ClassName.count.should == 0
     cn = Role.classname
     cn.should_not be_nil
     cn.id.should > 0
-    Classname.count.should == 1
+    ClassName.count.should == 1
   end
 
   it "should be save" do

@@ -1,25 +1,25 @@
 begin
-  require 'spec'                    
+  
+  require 'spec'
+  require 'active_support'
+  require 'active_support/test_case'
+  require 'active_support/dependencies'
+  require 'active_record/fixtures'
+                      
 rescue LoadError
   require 'rubygems' unless ENV['NO_RUBYGEMS']
+  
   gem 'rspec'
   require 'spec'
 end
 
 $:.unshift(File.dirname(__FILE__) + '/../lib')
 
-require 'active_support'
-require 'active_support/test_case'
-require 'active_support/dependencies'
-require 'active_record/fixtures'
-
 require 'liferay_models'
 require 'helper/database_connector'
 
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.logger.level = Logger::FATAL
-
-DatabaseConnector.establish_connection
 
 Spec::Runner.configure do |config|
   
@@ -72,7 +72,7 @@ def create_group(user)
 	Group.new(
     :companyid     => user.companyid,
     :creatoruserid => user.id,
-    :classnameid   => Classname.find_user.id,
+    :classnameid   => ClassName.find_user.id,
     :classpk       => user.id,
     :friendlyurl   => Group.generate_friendlyurl(user)
   )
@@ -141,7 +141,7 @@ def create_tag_asset(user, params ={})
   hash = {
     :createdate => Time.now,
     :modifieddate => Time.now,
-    :classnameid => Classname.find_user.id,
+    :classnameid => ClassName.find_user.id,
     :classpk => user.id,
     :visible => true,
     :startdate => Time.now,
