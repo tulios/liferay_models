@@ -4,7 +4,9 @@ module Liferay
     set_table_name :tagsvocabulary
     set_primary_key :vocabularyid
     
-    belongs_to :user, :foreign_key => "userid"
+    belongs_to :user, :foreign_key => 'userid'
+    belongs_to :company, :foreign_key => 'companyid'
+    belongs_to :group, :foreign_key => 'groupid'
     
     # Constructor    
     def initialize(params = {})

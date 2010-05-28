@@ -4,6 +4,7 @@ module Liferay
     set_table_name :tagsasset
     set_primary_key :assetid
     
+    belongs_to :company, :foreign_key => 'companyid'
     has_and_belongs_to_many :tag_entries,
                             :join_table              => 'tagsassets_tagsentries',
                             :foreign_key             => self.primary_key,

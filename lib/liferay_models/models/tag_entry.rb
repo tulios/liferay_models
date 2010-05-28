@@ -5,7 +5,9 @@ module Liferay
     set_primary_key :entryid
     
     belongs_to :tag_vocabulary, :foreign_key => 'vocabularyid'
-    
+    belongs_to :group, :foreign_key => 'groupid'
+    belongs_to :company, :foreign_key => 'companyid'
+
     has_and_belongs_to_many :tag_assets,
                             :join_table              => 'tagsassets_tagsentries',
                             :foreign_key             => self.primary_key,

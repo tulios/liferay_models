@@ -15,7 +15,7 @@ module Liferay
     set_table_name :company
     set_primary_key :companyid
     
-    validates_uniqueness_of :webid
+    validates_uniqueness_of :webid, :virtualhost
     
     def self.class_name
       'com.liferay.portal.model.Company'

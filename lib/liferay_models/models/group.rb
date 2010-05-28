@@ -20,9 +20,15 @@ module Liferay
     set_primary_key :groupid
     
     validates_presence_of :creatoruserid
+
+    belongs_to :company, :foreign_key => 'companyid'
     
+    has_and_belongs_to_many :users,
+                            :join_table              => 'users_groups',
+                            :foreign_key             => self.primary_key,
+                            :association_foreign_key => 'userid'
+
     # Constructor
-    
     def initialize(params = {})
       super(params)
       fill_default_values

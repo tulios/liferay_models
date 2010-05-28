@@ -15,12 +15,12 @@ describe TagEntry do
   
   it 'should be saved' do
     user = create_user_with_group!(:firstname => 'Túlio')
-   	
-   	vocabulary = create_tag_vocabulary(user)
-   	vocabulary.save.should be_true
-   	
-   	tag_entry = create_tag_entry(vocabulary)
-   	tag_entry.save.should be_true
+    
+    vocabulary = create_tag_vocabulary(user)
+    vocabulary.save.should be_true
+    
+    tag_entry = create_tag_entry(vocabulary)
+    tag_entry.save.should be_true
   end
   
   

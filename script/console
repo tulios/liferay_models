@@ -7,7 +7,7 @@ libs =  " -r irb/completion"
 # libs << " -r #{File.dirname(__FILE__) + '/../lib/console_lib/console_logger.rb'}"
 libs <<  " -r #{File.dirname(__FILE__) + '/../lib/liferay_models.rb'}"
 libs <<  " -r #{File.dirname(__FILE__) + '/../helper/database_connector.rb'}"
+libs <<  " -r #{File.dirname(__FILE__) + '/../spec/factories.rb'}"
 
 puts "Loading liferay_models gem"
 exec "#{irb} #{libs} --simple-prompt"
-DatabaseConnector.establish_connection

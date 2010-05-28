@@ -49,6 +49,8 @@ module Liferay
     validates_uniqueness_of :emailaddress, :screenname
     
     belongs_to :contact, :foreign_key => 'contactid'
+    belongs_to :company, :foreign_key => 'companyid'
+    
     has_and_belongs_to_many :groups,
                             :join_table              => 'users_groups',
                             :foreign_key             => self.primary_key,
