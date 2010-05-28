@@ -41,6 +41,8 @@ describe TagEntry do
 
   
   it 'should find all tags assets from a certain tag' do
+    classnameid = ClassName.find_user.id
+    
     owner = create_user_with_group!(:firstname => 'Túlio')
     tag_entry1 = create_tag_entry_with_vocabulary!(owner, :name => 'tag1')
     tag_entry2 = create_tag_entry_with_vocabulary!(owner, :name => 'tag2')
@@ -49,7 +51,7 @@ describe TagEntry do
     (0...10).each do |number|
       user = create_user_with_group!(:firstname => "name-#{number}")
       
-      tag_asset = create_tag_asset(user)
+      tag_asset = create_tag_asset(user, :classnameid => classnameid)
       tag_asset.save.should be_true 
       
       if number.odd?
@@ -61,7 +63,6 @@ describe TagEntry do
     end
     
     #Counting assets for each tag 
-    classnameid = ClassName.find_user.id
     tag_entry1.tag_assets.count(:conditions => {:classnameid => classnameid}).should == 5
     tag_entry2.tag_assets.count(:conditions => {:classnameid => classnameid}).should == 10
   end
