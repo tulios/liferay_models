@@ -29,9 +29,9 @@ module LiferayModels::TestUtil
     user = create_user(params)
    	user.save.should be_true
 
-   	group = create_group(user)
+   	group = create_group(user, :name => "Group for #{user.screenname}")
    	group.save.should be_true
-
+    
    	user.groups << group
    	user.save.should be_true
 

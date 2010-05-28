@@ -45,6 +45,10 @@ module LiferayModels::Factories
     # GROUP==================================================================================
     Factory.sequence :group_name do |n|
       "Group Created by Factory #{n}"
+    end
+    
+    Factory.sequence :group_livegroupid do |n|
+      n
     end 
      
     Factory.define :group do |f|
@@ -54,7 +58,7 @@ module LiferayModels::Factories
       f.friendlyurl ""
       f.classnameid 0
       f.classpk 0
-      f.livegroupid rand(1024)
+      f.livegroupid Factory.next :group_livegroupid
     end
     
     # TAG_VOCABULARY ========================================================================
@@ -95,7 +99,7 @@ module LiferayModels::Factories
     Factory.define :tag_asset do |t|
       t.createdate Time.now
       t.modifieddate Time.now
-      t.classnameid  ClassName.find_user.id
+      t.classnameid ClassName.find_user.id
       t.visible true
       t.startdate Time.now
       t.enddate Time.now + 1.day

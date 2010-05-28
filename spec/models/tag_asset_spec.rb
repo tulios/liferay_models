@@ -41,12 +41,14 @@ describe TagAsset do
   end
   
   it 'should find all tag entries from a certain asset' do
-    owner1 = create_user_with_group!(:firstname => 'Túlio')
-    tag_asset1 = create_tag_asset(owner1)
-    tag_asset1.save.should be_true
+    classnameid = ClassName.find_user.id
     
+    owner1 = create_user_with_group!(:firstname => 'Túlio')
+    tag_asset1 = create_tag_asset(owner1, :classnameid => classnameid)
+    tag_asset1.save.should be_true
+
     owner2 = create_user_with_group!(:firstname => 'Karina')
-    tag_asset2 = create_tag_asset(owner2)
+    tag_asset2 = create_tag_asset(owner2, :classnameid => classnameid)
     tag_asset2.save.should be_true
     
     #Tagging assets
@@ -64,12 +66,10 @@ describe TagAsset do
     tag_asset1.save.should be_true
     tag_asset2.save.should be_true
 
-    classnameid = ClassName.find_user.id
-
     #checking assets tags
     tag_asset1.tag_entries.count.should == 5
     tag_asset2.tag_entries.count.should == 10
-    
+
     entries = TagEntry.find_all_by_classnameid_with_quantity(classnameid)
     
     entries.should_not be_nil
